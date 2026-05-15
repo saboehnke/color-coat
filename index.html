@@ -39,7 +39,7 @@
 
     body {
       font-family: 'Inter', sans-serif;
-      background: var(--cream);
+      background: var(--cream-dk);
       color: var(--ink);
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
@@ -171,13 +171,14 @@
       top: 0; left: 0; right: 0;
       z-index: 1000;
       padding: 20px 0;
+      background: rgba(240,234,216,.92);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 1px 0 var(--line);
       transition: background var(--trans), padding var(--trans), box-shadow var(--trans);
     }
     #navbar.scrolled {
-      background: rgba(250,246,238,.96);
-      backdrop-filter: blur(14px);
+      background: rgba(240,234,216,.97);
       padding: 14px 0;
-      box-shadow: 0 1px 0 var(--line);
     }
 
     .nav-inner {
@@ -476,7 +477,7 @@
     /* ── INTRO STATEMENT ───────────────────────────── */
     #intro {
       padding: 140px 0 100px;
-      background: var(--cream);
+      background: var(--cream-dk);
     }
     .intro-grid {
       display: grid;
@@ -522,7 +523,7 @@
 
     /* ── SERVICES (editorial list) ─────────────────── */
     #services {
-      background: var(--cream);
+      background: var(--cream-dk);
       padding: 80px 0 140px;
       border-top: 1px solid var(--line);
     }
@@ -719,7 +720,7 @@
     /* ── ABOUT / CRAFT ─────────────────────────────── */
     #craft {
       padding: 160px 0;
-      background: var(--cream);
+      background: var(--cream-dk);
     }
     .craft-grid {
       display: grid;
@@ -867,7 +868,7 @@
     /* ── SERVICE AREA ─────────────────────── */
     #area {
       padding: 130px 0;
-      background: var(--cream);
+      background: var(--cream-dk);
     }
     .area-grid {
       display: grid;
@@ -894,7 +895,7 @@
     .area-badge {
       padding: 10px 18px;
       border: 1px solid var(--line);
-      background: var(--cream);
+      background: var(--cream-dk);
       color: var(--ink);
       font-size: .76rem;
       font-weight: 500;
@@ -1026,7 +1027,7 @@
 
     /* ── CONTACT ───────────────────────────── */
     #contact {
-      background: var(--cream);
+      background: var(--cream-dk);
       padding: 140px 0;
     }
     .contact-grid {
