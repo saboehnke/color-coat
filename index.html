@@ -288,128 +288,38 @@
       overflow: hidden;
     }
 
-    .hero-text {
+    .hero-paint-panel {
       display: flex;
       flex-direction: column;
-      padding: 0 80px;
-      max-width: 820px;
+      background: var(--cream-dk);
+      overflow: hidden;
     }
 
-    .hero-band {
-      border-bottom: 1px solid var(--line);
-      padding: 28px 0;
-    }
-
-    .hero-band-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      padding-top: 100px;
-    }
-
-    .hero-brandname {
-      font-family: 'Fraunces', serif;
-      font-variation-settings: "opsz" 144, "SOFT" 70;
-      font-size: 1.5rem;
-      font-weight: 600;
-      color: var(--teal);
-    }
-    .hero-brandname em {
-      font-style: italic;
-      font-variation-settings: "opsz" 144, "SOFT" 100;
-      color: var(--coral);
-    }
-
-    .hero-est {
-      font-size: .68rem;
-      font-weight: 600;
-      letter-spacing: .2em;
-      text-transform: uppercase;
-      color: var(--gray-lt);
-    }
-
-    .hero-band-main {
+    .hero-brush-svg {
       flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding-top: 52px;
-      padding-bottom: 52px;
+      width: 100%;
+      min-height: 0;
     }
 
-    .hero-statement {
-      font-family: 'Fraunces', serif;
-      font-variation-settings: "opsz" 144, "SOFT" 60;
-      font-weight: 400;
-      font-size: clamp(3.8rem, 7.5vw, 7rem);
-      line-height: .96;
-      letter-spacing: -.025em;
-      color: var(--ink);
-      margin-bottom: 30px;
-    }
-    .hero-statement em {
-      font-style: italic;
-      font-variation-settings: "opsz" 144, "SOFT" 100;
-      color: var(--teal);
-    }
-
-    .hero-sub {
-      font-size: 1.05rem;
-      line-height: 1.65;
-      color: var(--gray);
-      max-width: 460px;
-    }
-
-    .hero-svc-strip {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      list-style: none;
-    }
-    .hero-svc-strip li {
-      font-size: .7rem;
-      font-weight: 600;
-      letter-spacing: .16em;
-      text-transform: uppercase;
-      color: var(--gray);
-      padding-right: 20px;
-      margin-right: 20px;
-      border-right: 1px solid var(--line);
-    }
-    .hero-svc-strip li:last-child {
-      border-right: none;
-      padding-right: 0;
-      margin-right: 0;
-    }
-
-    .hero-band-action {
+    .hero-paint-footer {
       display: flex;
       align-items: center;
-      gap: 36px;
-      padding-bottom: 60px;
+      gap: 24px;
+      padding: 20px 40px;
+      border-top: 1px solid var(--line);
+      flex-shrink: 0;
     }
 
-    .hero-phone-block {
-      display: flex;
-      flex-direction: column;
-      gap: 3px;
-    }
-    .hero-phone-block .label {
-      font-size: .62rem;
-      font-weight: 600;
-      letter-spacing: .22em;
-      text-transform: uppercase;
-      color: var(--gray-lt);
-    }
-    .hero-phone-block a {
+    .hero-paint-phone {
+      margin-left: auto;
       font-family: 'Fraunces', serif;
       font-variation-settings: "opsz" 144, "SOFT" 60;
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       color: var(--ink);
       letter-spacing: -.01em;
       transition: color var(--trans);
     }
-    .hero-phone-block a:hover { color: var(--coral); }
+    .hero-paint-phone:hover { color: var(--coral); }
 
     /* Right panel — color swatch fan */
     .hero-visual {
@@ -480,42 +390,6 @@
       text-transform: uppercase;
       color: rgba(250,246,238,.5);
       font-weight: 500;
-    }
-
-    /* Vertical "scroll" indicator on left edge */
-    .scroll-indicator {
-      position: absolute;
-      bottom: 40px;
-      left: 80px;
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      font-size: .7rem;
-      letter-spacing: .2em;
-      text-transform: uppercase;
-      color: var(--gray-lt);
-      font-weight: 600;
-    }
-    .scroll-indicator .line {
-      display: block;
-      width: 60px;
-      height: 1px;
-      background: var(--gray-soft);
-      position: relative;
-      overflow: hidden;
-    }
-    .scroll-indicator .line::after {
-      content: '';
-      position: absolute;
-      top: 0; left: -100%;
-      width: 100%;
-      height: 100%;
-      background: var(--coral);
-      animation: scroll-line 2.6s ease-in-out infinite;
-    }
-    @keyframes scroll-line {
-      0% { left: -100%; }
-      100% { left: 100%; }
     }
 
     /* ── COLOR STRIP ───────────────────────────────── */
@@ -1255,11 +1129,10 @@
       .nav-inner { grid-template-columns: 1fr auto; }
 
       #hero { grid-template-columns: 1fr; min-height: auto; }
-      .hero-text { padding: 0 24px; }
-      .hero-band-top { padding-top: 84px; }
-      .hero-band-action { padding-bottom: 60px; flex-wrap: wrap; gap: 24px; }
+      .hero-paint-panel { min-height: 100svh; }
+      .hero-paint-footer { padding: 18px 24px; flex-wrap: wrap; gap: 16px; }
+      .hero-paint-phone { margin-left: 0; }
       .hero-visual { display: none; }
-      .scroll-indicator { display: none; }
 
       .color-strip { grid-template-columns: repeat(9, minmax(50px, 1fr)); height: 60px; overflow-x: auto; }
 
@@ -1313,34 +1186,105 @@
 
   <!-- ══ HERO ════════════════════════════════════════════════════ -->
   <section id="hero">
-    <div class="hero-text">
-      <div class="hero-band hero-band-top">
-        <span class="hero-brandname">Color <em>Coat</em></span>
-        <span class="hero-est">Custom Painting &amp; Deck Repair</span>
-      </div>
-      <div class="hero-band hero-band-main">
-        <h1 class="hero-statement">
-          Every coat,<br><em>done right.</em>
-        </h1>
-        <p class="hero-sub">Prep matters. Materials matter. Finish work tells the whole story — and we don't skip any of it.</p>
-      </div>
-      <div class="hero-band">
-        <ul class="hero-svc-strip">
-          <li>Interior Painting</li>
-          <li>Exterior Painting</li>
-          <li>Power Washing</li>
-          <li>Deck Repair</li>
-        </ul>
-      </div>
-      <div class="hero-band hero-band-action">
+
+    <!-- Left: paintbrush illustration -->
+    <div class="hero-paint-panel">
+      <svg class="hero-brush-svg" viewBox="0 0 700 900"
+           preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+
+        <!-- ── TOP PAINT STREAK (where the brush has already been) ── -->
+        <path d="M 350 -15 C 340 90, 362 205, 350 368"
+              stroke="#C26142" stroke-width="82" stroke-linecap="round"
+              fill="none" opacity="0.9"/>
+
+        <!-- ── PAINTBRUSH ── -->
+        <!-- Rotated 4° around the ferrule center so handle tilts naturally away -->
+        <g transform="translate(350, 0) rotate(4, 0, 330)">
+
+          <!-- Handle -->
+          <rect x="-14" y="46" width="28" height="268" rx="5" fill="#8B634A"/>
+          <!-- Handle left sheen -->
+          <rect x="-6" y="54" width="4" height="252" rx="2" fill="rgba(255,255,255,0.11)"/>
+          <!-- Handle right shadow -->
+          <rect x="10" y="54" width="4" height="252" rx="2" fill="rgba(0,0,0,0.1)"/>
+          <!-- Handle bottom cap -->
+          <rect x="-14" y="302" width="28" height="13" rx="2" fill="#6A4535"/>
+
+          <!-- Ferrule (metal band) -->
+          <rect x="-18" y="315" width="36" height="33" rx="2" fill="#B2B7C0"/>
+          <!-- Ferrule seam lines -->
+          <rect x="-18" y="327" width="36" height="2.5" fill="rgba(0,0,0,0.16)"/>
+          <rect x="-18" y="336" width="36" height="2" fill="rgba(0,0,0,0.1)"/>
+          <!-- Ferrule highlight -->
+          <rect x="-10" y="316" width="5" height="30" rx="1" fill="rgba(255,255,255,0.22)"/>
+
+          <!-- Bristle body (wide flat house-painting brush) -->
+          <path d="M -19 348 L -24 446 L 24 446 L 19 348 Z" fill="#1C2B2E"/>
+          <!-- Bristle separation lines -->
+          <line x1="-8"  y1="348" x2="-11" y2="444" stroke="rgba(255,255,255,0.06)" stroke-width="1.5"/>
+          <line x1=" 2"  y1="348" x2="  2" y2="444" stroke="rgba(255,255,255,0.05)" stroke-width="1.5"/>
+          <line x1=" 12" y1="348" x2=" 14" y2="444" stroke="rgba(255,255,255,0.06)" stroke-width="1.5"/>
+          <!-- Paint loaded on bristles -->
+          <path d="M -17 390 L -23 444 L 23 444 L 17 390 Z" fill="#C26142" opacity="0.82"/>
+          <!-- Bristle flat tip -->
+          <rect x="-24" y="442" width="48" height="9" rx="3" fill="#1A2828"/>
+          <!-- Paint drip from tip -->
+          <ellipse cx="3" cy="458" rx="5" ry="13" fill="#C26142" opacity="0.88"/>
+
+        </g>
+
+        <!-- ── LOWER PAINT BLOB (paint flowing down around the company name) ── -->
+        <path d="
+          M 350 465
+          C 418 467, 476 504, 494 562
+          C 512 620, 498 682, 468 728
+          C 438 774, 396 802, 350 804
+          C 304 806, 258 782, 226 738
+          C 194 694, 181 634, 197 576
+          C 213 518, 280 463, 350 465
+          Z
+        " fill="#C26142" opacity="0.91"/>
+
+        <!-- ── COMPANY NAME in the paint blob ── -->
+        <text
+          x="350" y="628"
+          text-anchor="middle"
+          font-family="'Fraunces', serif"
+          font-size="74"
+          letter-spacing="-1"
+          fill="#FAF6EE"
+          style="font-variation-settings: 'opsz' 144, 'SOFT' 60;">Color</text>
+
+        <text
+          x="350" y="726"
+          text-anchor="middle"
+          font-family="'Fraunces', serif"
+          font-size="76"
+          font-style="italic"
+          letter-spacing="-1"
+          fill="#FAF6EE"
+          style="font-variation-settings: 'opsz' 144, 'SOFT' 100;">Coat</text>
+
+        <!-- Tagline inside blob -->
+        <text
+          x="350" y="778"
+          text-anchor="middle"
+          font-family="'Inter', sans-serif"
+          font-size="10.5"
+          font-weight="600"
+          letter-spacing="2.5"
+          fill="rgba(250,246,238,0.6)">CUSTOM PAINTING · DECK REPAIR</text>
+
+      </svg>
+
+      <!-- Footer strip: CTA + phone -->
+      <div class="hero-paint-footer">
         <a href="#contact" class="btn btn-coral">Get a Free Estimate <i class="fas fa-arrow-right"></i></a>
-        <div class="hero-phone-block">
-          <span class="label">Call direct</span>
-          <a href="tel:+15555555555">(555) 555-5555</a>
-        </div>
+        <a href="tel:+15555555555" class="hero-paint-phone">(555) 555-5555</a>
       </div>
     </div>
 
+    <!-- Right: color swatch fan -->
     <div class="hero-visual">
       <div class="swatch-fan">
         <div class="swatch-chip"><span>Terracotta · 01</span></div>
@@ -1353,9 +1297,6 @@
       <div class="hero-corner-label">A sample from hundreds</div>
     </div>
 
-    <div class="scroll-indicator">
-      <span class="line"></span> Scroll
-    </div>
   </section>
 
   <!-- ══ COLOR STRIP ═════════════════════════════════════════════ -->
