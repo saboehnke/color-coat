@@ -289,6 +289,7 @@
     }
 
     .hero-paint-panel {
+      height: 100vh;
       display: flex;
       flex-direction: column;
       background: var(--cream-dk);
@@ -296,7 +297,8 @@
     }
 
     .hero-brush-svg {
-      flex: 1;
+      display: block;
+      flex: 1 1 0;
       width: 100%;
       min-height: 0;
     }
@@ -1129,7 +1131,7 @@
       .nav-inner { grid-template-columns: 1fr auto; }
 
       #hero { grid-template-columns: 1fr; min-height: auto; }
-      .hero-paint-panel { min-height: 100svh; }
+      .hero-paint-panel { height: 100svh; }
       .hero-paint-footer { padding: 18px 24px; flex-wrap: wrap; gap: 16px; }
       .hero-paint-phone { margin-left: 0; }
       .hero-visual { display: none; }
@@ -1189,91 +1191,76 @@
 
     <!-- Left: paintbrush illustration -->
     <div class="hero-paint-panel">
-      <svg class="hero-brush-svg" viewBox="0 0 700 900"
+      <svg class="hero-brush-svg" viewBox="0 0 700 800"
            preserveAspectRatio="xMidYMid meet" aria-hidden="true">
 
         <!-- ── TOP PAINT STREAK (where the brush has already been) ── -->
-        <path d="M 350 -15 C 340 90, 362 205, 350 368"
-              stroke="#C26142" stroke-width="82" stroke-linecap="round"
+        <path d="M 350 -10 C 340 85, 362 178, 350 316"
+              stroke="#C26142" stroke-width="80" stroke-linecap="round"
               fill="none" opacity="0.9"/>
 
         <!-- ── PAINTBRUSH ── -->
-        <!-- Rotated 4° around the ferrule center so handle tilts naturally away -->
-        <g transform="translate(350, 0) rotate(4, 0, 330)">
+        <!-- 4° tilt around ferrule center so handle angles naturally away from wall -->
+        <g transform="translate(350, 0) rotate(4, 0, 334)">
 
           <!-- Handle -->
-          <rect x="-14" y="46" width="28" height="268" rx="5" fill="#8B634A"/>
-          <!-- Handle left sheen -->
-          <rect x="-6" y="54" width="4" height="252" rx="2" fill="rgba(255,255,255,0.11)"/>
-          <!-- Handle right shadow -->
-          <rect x="10" y="54" width="4" height="252" rx="2" fill="rgba(0,0,0,0.1)"/>
+          <rect x="-14" y="72" width="28" height="234" rx="5" fill="#8B634A"/>
+          <rect x="-6"  y="80" width="4"  height="218" rx="2" fill="rgba(255,255,255,0.11)"/>
+          <rect x="10"  y="80" width="4"  height="218" rx="2" fill="rgba(0,0,0,0.1)"/>
           <!-- Handle bottom cap -->
-          <rect x="-14" y="302" width="28" height="13" rx="2" fill="#6A4535"/>
+          <rect x="-14" y="294" width="28" height="12" rx="2" fill="#6A4535"/>
 
-          <!-- Ferrule (metal band) -->
-          <rect x="-18" y="315" width="36" height="33" rx="2" fill="#B2B7C0"/>
-          <!-- Ferrule seam lines -->
-          <rect x="-18" y="327" width="36" height="2.5" fill="rgba(0,0,0,0.16)"/>
-          <rect x="-18" y="336" width="36" height="2" fill="rgba(0,0,0,0.1)"/>
-          <!-- Ferrule highlight -->
-          <rect x="-10" y="316" width="5" height="30" rx="1" fill="rgba(255,255,255,0.22)"/>
+          <!-- Ferrule -->
+          <rect x="-18" y="306" width="36" height="32" rx="2" fill="#B2B7C0"/>
+          <rect x="-18" y="318" width="36" height="2.5" fill="rgba(0,0,0,0.16)"/>
+          <rect x="-18" y="327" width="36" height="2"   fill="rgba(0,0,0,0.1)"/>
+          <rect x="-10" y="307" width="5"  height="29" rx="1" fill="rgba(255,255,255,0.22)"/>
 
-          <!-- Bristle body (wide flat house-painting brush) -->
-          <path d="M -19 348 L -24 446 L 24 446 L 19 348 Z" fill="#1C2B2E"/>
-          <!-- Bristle separation lines -->
-          <line x1="-8"  y1="348" x2="-11" y2="444" stroke="rgba(255,255,255,0.06)" stroke-width="1.5"/>
-          <line x1=" 2"  y1="348" x2="  2" y2="444" stroke="rgba(255,255,255,0.05)" stroke-width="1.5"/>
-          <line x1=" 12" y1="348" x2=" 14" y2="444" stroke="rgba(255,255,255,0.06)" stroke-width="1.5"/>
+          <!-- Bristles (wide flat house-painting brush) -->
+          <path d="M -19 338 L -24 424 L 24 424 L 19 338 Z" fill="#1C2B2E"/>
+          <line x1="-8"  y1="338" x2="-11" y2="422" stroke="rgba(255,255,255,0.06)" stroke-width="1.5"/>
+          <line x1=" 2"  y1="338" x2="  2" y2="422" stroke="rgba(255,255,255,0.05)" stroke-width="1.5"/>
+          <line x1=" 12" y1="338" x2=" 14" y2="422" stroke="rgba(255,255,255,0.06)" stroke-width="1.5"/>
           <!-- Paint loaded on bristles -->
-          <path d="M -17 390 L -23 444 L 23 444 L 17 390 Z" fill="#C26142" opacity="0.82"/>
-          <!-- Bristle flat tip -->
-          <rect x="-24" y="442" width="48" height="9" rx="3" fill="#1A2828"/>
-          <!-- Paint drip from tip -->
-          <ellipse cx="3" cy="458" rx="5" ry="13" fill="#C26142" opacity="0.88"/>
+          <path d="M -17 378 L -23 422 L 23 422 L 17 378 Z" fill="#C26142" opacity="0.82"/>
+          <!-- Flat tip -->
+          <rect x="-24" y="420" width="48" height="9" rx="3" fill="#1A2828"/>
+          <!-- Paint drip -->
+          <ellipse cx="3" cy="436" rx="5" ry="11" fill="#C26142" opacity="0.88"/>
 
         </g>
 
-        <!-- ── LOWER PAINT BLOB (paint flowing down around the company name) ── -->
+        <!-- ── LOWER PAINT BLOB (flowing down, framing the company name) ── -->
         <path d="
-          M 350 465
-          C 418 467, 476 504, 494 562
-          C 512 620, 498 682, 468 728
-          C 438 774, 396 802, 350 804
-          C 304 806, 258 782, 226 738
-          C 194 694, 181 634, 197 576
-          C 213 518, 280 463, 350 465
+          M 350 444
+          C 418 447, 476 482, 494 538
+          C 512 594, 497 650, 466 693
+          C 435 736, 394 760, 350 762
+          C 306 764, 262 741, 230 700
+          C 198 659, 185 603, 201 548
+          C 217 493, 282 441, 350 444
           Z
         " fill="#C26142" opacity="0.91"/>
 
-        <!-- ── COMPANY NAME in the paint blob ── -->
+        <!-- ── COMPANY NAME ── -->
         <text
-          x="350" y="628"
+          x="350" y="566"
           text-anchor="middle"
           font-family="'Fraunces', serif"
-          font-size="74"
+          font-size="76"
           letter-spacing="-1"
           fill="#FAF6EE"
           style="font-variation-settings: 'opsz' 144, 'SOFT' 60;">Color</text>
 
         <text
-          x="350" y="726"
+          x="350" y="666"
           text-anchor="middle"
           font-family="'Fraunces', serif"
-          font-size="76"
+          font-size="78"
           font-style="italic"
           letter-spacing="-1"
           fill="#FAF6EE"
           style="font-variation-settings: 'opsz' 144, 'SOFT' 100;">Coat</text>
-
-        <!-- Tagline inside blob -->
-        <text
-          x="350" y="778"
-          text-anchor="middle"
-          font-family="'Inter', sans-serif"
-          font-size="10.5"
-          font-weight="600"
-          letter-spacing="2.5"
-          fill="rgba(250,246,238,0.6)">CUSTOM PAINTING · DECK REPAIR</text>
 
       </svg>
 
