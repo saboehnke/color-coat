@@ -301,7 +301,9 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: 80px 48px 20px;
+      align-items: center;
+      text-align: center;
+      padding: 80px 40px 20px;
     }
 
     .hw-eyebrow {
@@ -323,7 +325,7 @@
 
     .hw-color {
       display: block;
-      font-size: clamp(8rem, 15vw, 13rem);
+      font-size: clamp(9rem, 19vw, 16rem);
       color: var(--teal);
       font-variation-settings: "opsz" 144, "SOFT" 60;
     }
@@ -335,24 +337,24 @@
 
     .hw-coat {
       display: block;
-      font-size: clamp(8rem, 15vw, 13rem);
+      font-size: clamp(9rem, 19vw, 16rem);
       color: var(--coral);
       font-style: italic;
       font-variation-settings: "opsz" 144, "SOFT" 100;
     }
 
-    /* Brush sits right of "Coat" — handle angles upper-right, clear of text */
+    /* Brush past right edge of Coat — 45° lifts handle upper-right like finishing t upstroke */
     .hw-brush-holder {
       position: absolute;
-      right: -72px;
-      bottom: 8px;
+      right: -68px;
+      bottom: 12px;
     }
 
     .hw-brush-svg {
       display: block;
       width: 56px;
       height: 200px;
-      transform: rotate(30deg);
+      transform: rotate(45deg);
       transform-origin: bottom right;
     }
 
@@ -1294,7 +1296,6 @@
         <div class="swatch-chip"><span>Dusty Rose · 05</span></div>
         <div class="swatch-chip dark"><span>Linen Cream · 06</span></div>
       </div>
-      <div class="hero-corner-label">A sample from hundreds</div>
     </div>
 
   </section>
