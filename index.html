@@ -832,6 +832,67 @@
       margin-top: 4px;
     }
 
+    /* ── GALLERY ─────────────────────────── */
+    #gallery {
+      padding: 120px 0;
+      background: var(--ink);
+    }
+    .gallery-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      padding-bottom: 48px;
+      border-bottom: 1px solid rgba(250,246,238,.1);
+      margin-bottom: 48px;
+    }
+    .gallery-header h2 {
+      font-size: clamp(2.4rem, 4.5vw, 3.4rem);
+      color: var(--cream);
+    }
+    .gallery-header h2 em { color: var(--coral); }
+    .gallery-header .eyebrow { color: var(--gold); }
+    .gallery-header .eyebrow::before { background: var(--gold); }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+    .gallery-item {
+      position: relative;
+      aspect-ratio: 4/3;
+      overflow: hidden;
+      background: var(--teal-dk);
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform .7s cubic-bezier(.2,.8,.3,1), filter .7s ease;
+      filter: brightness(.95);
+    }
+    .gallery-item:hover img {
+      transform: scale(1.05);
+      filter: brightness(1.05);
+    }
+    /* Shown until real images added */
+    .gallery-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .68rem;
+      font-weight: 600;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: rgba(250,246,238,.2);
+    }
+
+    /* Mobile-only services quote button */
+    .srv-quote-mob { display: none; }
+
     /* ── CTA ─────────────────────────────── */
     #cta {
       background: var(--coral);
@@ -1200,6 +1261,9 @@
       .intro-side .section-num { font-size: 5rem; }
 
       .services-header { grid-template-columns: 1fr; }
+      .srv-quote-dt { display: none; }
+      .srv-quote-mob { display: inline-flex; margin-top: 32px; }
+      .gallery-grid { grid-template-columns: 1fr; }
       .srv-row { grid-template-columns: 50px 1fr 30px; gap: 20px; padding: 24px 0; }
       .srv-row:hover { padding-left: 12px; }
       .srv-name { font-size: 1.4rem; }
@@ -1338,7 +1402,7 @@
           <span class="eyebrow">Section 02 — Services</span>
           <h2 class="h-display">What we <em>do.</em></h2>
         </div>
-        <a href="#contact" class="btn btn-line">Request a Quote</a>
+        <a href="#contact" class="btn btn-line srv-quote-dt">Request a Quote</a>
       </div>
 
       <div class="services-list">
@@ -1396,6 +1460,7 @@
           <span class="srv-arrow">→</span>
         </a>
       </div>
+      <a href="#contact" class="btn btn-line srv-quote-mob">Request a Quote <i class="fas fa-arrow-right"></i></a>
     </div>
   </section>
 
@@ -1415,6 +1480,41 @@
           <div class="craft-block b1"></div>
           <div class="craft-block b2"></div>
           <div class="craft-block b3"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ GALLERY ═══════════════════════════════════════════════ -->
+  <section id="gallery">
+    <div class="container-wide">
+      <div class="gallery-header fade-up">
+        <div>
+          <span class="eyebrow">Past Work</span>
+          <h2 class="h-display">Projects we're <em>proud of.</em></h2>
+        </div>
+      </div>
+      <div class="gallery-grid">
+        <!-- Add images: download from Facebook, place in img/ folder, update src below -->
+        <div class="gallery-item fade-up">
+          <img src="img/work-1.jpg" alt="Color Coat — past painting project" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.gallery-placeholder').style.display='flex'"/>
+          <div class="gallery-placeholder" style="display:none">Photo coming soon</div>
+        </div>
+        <div class="gallery-item fade-up">
+          <img src="img/work-2.jpg" alt="Color Coat — past painting project" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.gallery-placeholder').style.display='flex'"/>
+          <div class="gallery-placeholder" style="display:none">Photo coming soon</div>
+        </div>
+        <div class="gallery-item fade-up">
+          <img src="img/work-3.jpg" alt="Color Coat — past painting project" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.gallery-placeholder').style.display='flex'"/>
+          <div class="gallery-placeholder" style="display:none">Photo coming soon</div>
+        </div>
+        <div class="gallery-item fade-up">
+          <img src="img/work-4.jpg" alt="Color Coat — past painting project" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.querySelector('.gallery-placeholder').style.display='flex'"/>
+          <div class="gallery-placeholder" style="display:none">Photo coming soon</div>
         </div>
       </div>
     </div>
