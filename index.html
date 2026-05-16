@@ -296,11 +296,63 @@
       overflow: hidden;
     }
 
-    .hero-brush-svg {
+    .hero-wordmark {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 80px 60px 20px;
+    }
+
+    .hw-eyebrow {
+      font-size: .7rem;
+      font-weight: 600;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--gray-lt);
+      margin-bottom: 32px;
+    }
+
+    .hw-name {
+      font-family: 'Fraunces', serif;
+      font-weight: 400;
+      line-height: .88;
+      letter-spacing: -.035em;
+      margin: 0;
+    }
+
+    .hw-color {
       display: block;
-      flex: 1 1 0;
-      width: 100%;
-      min-height: 0;
+      font-size: clamp(6.5rem, 12vw, 10.5rem);
+      color: var(--teal);
+      font-variation-settings: "opsz" 144, "SOFT" 60;
+    }
+
+    .hw-coat-row {
+      position: relative;
+      display: inline-block;
+    }
+
+    .hw-coat {
+      display: block;
+      font-size: clamp(6.5rem, 12vw, 10.5rem);
+      color: var(--coral);
+      font-style: italic;
+      font-variation-settings: "opsz" 144, "SOFT" 100;
+    }
+
+    .hw-brush-holder {
+      position: absolute;
+      right: -8px;
+      bottom: 4px;
+    }
+
+    .hw-brush-svg {
+      display: block;
+      width: 48px;
+      height: 175px;
+      transform: rotate(-22deg);
+      transform-origin: bottom left;
     }
 
     .hero-paint-footer {
@@ -1132,6 +1184,7 @@
 
       #hero { grid-template-columns: 1fr; min-height: auto; }
       .hero-paint-panel { height: 100svh; }
+      .hero-wordmark { padding: 80px 32px 20px; }
       .hero-paint-footer { padding: 18px 24px; flex-wrap: wrap; gap: 16px; }
       .hero-paint-phone { margin-left: 0; }
       .hero-visual { display: none; }
@@ -1191,84 +1244,37 @@
 
     <!-- Left: paintbrush illustration -->
     <div class="hero-paint-panel">
-      <svg class="hero-brush-svg" viewBox="0 0 700 800"
-           preserveAspectRatio="xMidYMid meet" aria-hidden="true">
-
-        <defs>
-          <!-- Displacement filter gives organic, hand-painted stroke edges -->
-          <filter id="brushTex" x="-8%" y="-5%" width="116%" height="110%">
-            <feTurbulence type="fractalNoise" baseFrequency="0.022 0.07"
-                          numOctaves="4" seed="7" result="noise"/>
-            <feDisplacementMap in="SourceGraphic" in2="noise"
-                               scale="8" xChannelSelector="R" yChannelSelector="G"/>
-          </filter>
-        </defs>
-
-        <!-- ── PAINT ARC: top-left → quarter-circle sweep → blob ── -->
-        <!-- Main stroke with brush-texture filter -->
-        <path d="M 74 -18 C 74 282, 222 450, 350 444"
-              stroke="#C26142" stroke-width="88" stroke-linecap="round"
-              fill="none" opacity="0.9" filter="url(#brushTex)"/>
-
-        <!-- Individual bristle lines along the arc for texture -->
-        <path d="M 62 -18 C 62 276, 212 444, 340 440"
-              stroke="#9E4828" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.38"/>
-        <path d="M 56 -18 C 56 272, 207 441, 336 438"
-              stroke="#D96040" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.22"/>
-        <path d="M 88 -18 C 88 288, 230 455, 360 448"
-              stroke="#9E4828" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.3"/>
-        <path d="M 94 -18 C 94 292, 236 458, 365 450"
-              stroke="#D96040" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.18"/>
-
-        <!-- ── PAINTBRUSH: thicker, bristle tip sits at t≈0.25 on the arc ── -->
-        <!-- Handle exits upper-left off-screen; ferrule + bristles fully visible -->
-        <g transform="translate(38, -310) rotate(-30, 0, 400)">
-
-          <!-- Handle (36px wide) -->
-          <rect x="-18" y="72" width="36" height="300" rx="6" fill="#8B634A"/>
-          <rect x="-8"  y="80" width="5"  height="284" rx="2" fill="rgba(255,255,255,0.11)"/>
-          <rect x="13"  y="80" width="5"  height="284" rx="2" fill="rgba(0,0,0,0.1)"/>
-          <rect x="-18" y="372" width="36" height="12" rx="2" fill="#6A4535"/>
-
-          <!-- Ferrule (42px wide) -->
-          <rect x="-21" y="384" width="42" height="32" rx="2" fill="#B2B7C0"/>
-          <rect x="-21" y="396" width="42" height="2.5" fill="rgba(0,0,0,0.16)"/>
-          <rect x="-21" y="405" width="42" height="2"   fill="rgba(0,0,0,0.1)"/>
-          <rect x="-11" y="385" width="6"  height="29" rx="1" fill="rgba(255,255,255,0.22)"/>
-
-          <!-- Bristles (68px wide) -->
-          <path d="M -21 416 L -34 502 L 34 502 L 21 416 Z" fill="#1C2B2E"/>
-          <line x1="-13" y1="416" x2="-17" y2="500" stroke="rgba(255,255,255,0.06)" stroke-width="2"/>
-          <line x1=" -4" y1="416" x2=" -5" y2="500" stroke="rgba(255,255,255,0.05)" stroke-width="2"/>
-          <line x1="  6" y1="416" x2="  7" y2="500" stroke="rgba(255,255,255,0.05)" stroke-width="2"/>
-          <line x1=" 15" y1="416" x2=" 17" y2="500" stroke="rgba(255,255,255,0.06)" stroke-width="2"/>
-          <rect x="-34" y="498" width="68" height="10" rx="3" fill="#1A2828"/>
-
-        </g>
-
-        <!-- ── PAINT BLOB at arc terminus ── -->
-        <path d="
-          M 350 444
-          C 418 447, 476 482, 494 538
-          C 512 594, 497 650, 466 693
-          C 435 736, 394 760, 350 762
-          C 306 764, 262 741, 230 700
-          C 198 659, 185 603, 201 548
-          C 217 493, 282 441, 350 444
-          Z
-        " fill="#C26142" opacity="0.91"/>
-
-        <!-- ── COMPANY NAME ── -->
-        <text x="350" y="566" text-anchor="middle"
-              font-family="'Fraunces', serif" font-size="76" letter-spacing="-1"
-              fill="#FAF6EE" style="font-variation-settings: 'opsz' 144, 'SOFT' 60;">Color</text>
-
-        <text x="350" y="666" text-anchor="middle"
-              font-family="'Fraunces', serif" font-size="78" font-style="italic"
-              letter-spacing="-1" fill="#FAF6EE"
-              style="font-variation-settings: 'opsz' 144, 'SOFT' 100;">Coat</text>
-
-      </svg>
+      <div class="hero-wordmark">
+        <p class="hw-eyebrow">Custom Painting &middot; Deck Repair</p>
+        <h1 class="hw-name">
+          <span class="hw-color">Color</span>
+          <span class="hw-coat-row">
+            <span class="hw-coat">Coat</span>
+            <span class="hw-brush-holder" aria-hidden="true">
+              <svg class="hw-brush-svg" viewBox="0 0 48 175" fill="none">
+                <!-- Handle -->
+                <rect x="16" y="2" width="16" height="110" rx="4" fill="#8B634A"/>
+                <rect x="20" y="8" width="4" height="98"  rx="2" fill="rgba(255,255,255,0.12)"/>
+                <rect x="30" y="8" width="3" height="98"  rx="2" fill="rgba(0,0,0,0.1)"/>
+                <rect x="16" y="110" width="16" height="8" rx="2" fill="#6A4535"/>
+                <!-- Ferrule -->
+                <rect x="12" y="118" width="24" height="17" rx="2" fill="#B2B7C0"/>
+                <rect x="12" y="127" width="24" height="2"  fill="rgba(0,0,0,0.14)"/>
+                <rect x="14" y="119" width="5"  height="14" rx="1" fill="rgba(255,255,255,0.22)"/>
+                <!-- Bristles -->
+                <path d="M 12 135 L 5 165 L 43 165 L 36 135 Z" fill="#1C2B2E"/>
+                <line x1="17" y1="135" x2="14" y2="163" stroke="rgba(255,255,255,0.06)" stroke-width="1.5"/>
+                <line x1="24" y1="135" x2="24" y2="163" stroke="rgba(255,255,255,0.05)" stroke-width="1.5"/>
+                <line x1="31" y1="135" x2="33" y2="163" stroke="rgba(255,255,255,0.06)" stroke-width="1.5"/>
+                <rect x="5" y="162" width="38" height="7" rx="2" fill="#1A2828"/>
+                <!-- Fresh coral paint at tip — just applied -->
+                <path d="M 5 169 Q 24 175 43 169" stroke="#C26142" stroke-width="4"
+                      stroke-linecap="round" fill="none" opacity="0.75"/>
+              </svg>
+            </span>
+          </span>
+        </h1>
+      </div>
 
       <!-- Footer strip: CTA + phone -->
       <div class="hero-paint-footer">
