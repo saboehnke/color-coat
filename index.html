@@ -1194,39 +1194,59 @@
       <svg class="hero-brush-svg" viewBox="0 0 700 800"
            preserveAspectRatio="xMidYMid meet" aria-hidden="true">
 
-        <!-- ── TOP PAINT STREAK (where the brush has already been) ── -->
-        <path d="M 662 -20 C 614 60, 566 165, 438 340"
-              stroke="#C26142" stroke-width="78" stroke-linecap="round"
-              fill="none" opacity="0.9"/>
+        <defs>
+          <!-- Displacement filter gives organic, hand-painted stroke edges -->
+          <filter id="brushTex" x="-8%" y="-5%" width="116%" height="110%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.022 0.07"
+                          numOctaves="4" seed="7" result="noise"/>
+            <feDisplacementMap in="SourceGraphic" in2="noise"
+                               scale="8" xChannelSelector="R" yChannelSelector="G"/>
+          </filter>
+        </defs>
 
-        <!-- ── PAINTBRUSH ── -->
-        <!-- 40°, longer handle — top lands ~(637,105) upper-right, tip ~(357,438) at blob -->
-        <g transform="translate(426, -44) rotate(40, 0, 400)">
+        <!-- ── PAINT ARC: top-left → quarter-circle sweep → blob ── -->
+        <!-- Main stroke with brush-texture filter -->
+        <path d="M 74 -18 C 74 282, 222 450, 350 444"
+              stroke="#C26142" stroke-width="88" stroke-linecap="round"
+              fill="none" opacity="0.9" filter="url(#brushTex)"/>
 
-          <!-- Handle (extended to 300px so it reaches the upper-right corner) -->
-          <rect x="-14" y="72" width="28" height="300" rx="5" fill="#8B634A"/>
-          <rect x="-6"  y="80" width="4"  height="284" rx="2" fill="rgba(255,255,255,0.11)"/>
-          <rect x="10"  y="80" width="4"  height="284" rx="2" fill="rgba(0,0,0,0.1)"/>
-          <!-- Handle bottom cap -->
-          <rect x="-14" y="372" width="28" height="12" rx="2" fill="#6A4535"/>
+        <!-- Individual bristle lines along the arc for texture -->
+        <path d="M 62 -18 C 62 276, 212 444, 340 440"
+              stroke="#9E4828" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.38"/>
+        <path d="M 56 -18 C 56 272, 207 441, 336 438"
+              stroke="#D96040" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.22"/>
+        <path d="M 88 -18 C 88 288, 230 455, 360 448"
+              stroke="#9E4828" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.3"/>
+        <path d="M 94 -18 C 94 292, 236 458, 365 450"
+              stroke="#D96040" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.18"/>
 
-          <!-- Ferrule -->
-          <rect x="-18" y="384" width="36" height="32" rx="2" fill="#B2B7C0"/>
-          <rect x="-18" y="396" width="36" height="2.5" fill="rgba(0,0,0,0.16)"/>
-          <rect x="-18" y="405" width="36" height="2"   fill="rgba(0,0,0,0.1)"/>
-          <rect x="-10" y="385" width="5"  height="29" rx="1" fill="rgba(255,255,255,0.22)"/>
+        <!-- ── PAINTBRUSH: thicker, bristle tip sits at t≈0.25 on the arc ── -->
+        <!-- Handle exits upper-left off-screen; ferrule + bristles fully visible -->
+        <g transform="translate(38, -310) rotate(-30, 0, 400)">
 
-          <!-- Bristles -->
-          <path d="M -19 416 L -24 502 L 24 502 L 19 416 Z" fill="#1C2B2E"/>
-          <line x1="-8"  y1="416" x2="-11" y2="500" stroke="rgba(255,255,255,0.06)" stroke-width="1.5"/>
-          <line x1=" 2"  y1="416" x2="  2" y2="500" stroke="rgba(255,255,255,0.05)" stroke-width="1.5"/>
-          <line x1=" 12" y1="416" x2=" 14" y2="500" stroke="rgba(255,255,255,0.06)" stroke-width="1.5"/>
-          <!-- Flat tip -->
-          <rect x="-24" y="498" width="48" height="9" rx="3" fill="#1A2828"/>
+          <!-- Handle (36px wide) -->
+          <rect x="-18" y="72" width="36" height="300" rx="6" fill="#8B634A"/>
+          <rect x="-8"  y="80" width="5"  height="284" rx="2" fill="rgba(255,255,255,0.11)"/>
+          <rect x="13"  y="80" width="5"  height="284" rx="2" fill="rgba(0,0,0,0.1)"/>
+          <rect x="-18" y="372" width="36" height="12" rx="2" fill="#6A4535"/>
+
+          <!-- Ferrule (42px wide) -->
+          <rect x="-21" y="384" width="42" height="32" rx="2" fill="#B2B7C0"/>
+          <rect x="-21" y="396" width="42" height="2.5" fill="rgba(0,0,0,0.16)"/>
+          <rect x="-21" y="405" width="42" height="2"   fill="rgba(0,0,0,0.1)"/>
+          <rect x="-11" y="385" width="6"  height="29" rx="1" fill="rgba(255,255,255,0.22)"/>
+
+          <!-- Bristles (68px wide) -->
+          <path d="M -21 416 L -34 502 L 34 502 L 21 416 Z" fill="#1C2B2E"/>
+          <line x1="-13" y1="416" x2="-17" y2="500" stroke="rgba(255,255,255,0.06)" stroke-width="2"/>
+          <line x1=" -4" y1="416" x2=" -5" y2="500" stroke="rgba(255,255,255,0.05)" stroke-width="2"/>
+          <line x1="  6" y1="416" x2="  7" y2="500" stroke="rgba(255,255,255,0.05)" stroke-width="2"/>
+          <line x1=" 15" y1="416" x2=" 17" y2="500" stroke="rgba(255,255,255,0.06)" stroke-width="2"/>
+          <rect x="-34" y="498" width="68" height="10" rx="3" fill="#1A2828"/>
 
         </g>
 
-        <!-- ── LOWER PAINT BLOB (flowing down, framing the company name) ── -->
+        <!-- ── PAINT BLOB at arc terminus ── -->
         <path d="
           M 350 444
           C 418 447, 476 482, 494 538
@@ -1239,24 +1259,14 @@
         " fill="#C26142" opacity="0.91"/>
 
         <!-- ── COMPANY NAME ── -->
-        <text
-          x="350" y="566"
-          text-anchor="middle"
-          font-family="'Fraunces', serif"
-          font-size="76"
-          letter-spacing="-1"
-          fill="#FAF6EE"
-          style="font-variation-settings: 'opsz' 144, 'SOFT' 60;">Color</text>
+        <text x="350" y="566" text-anchor="middle"
+              font-family="'Fraunces', serif" font-size="76" letter-spacing="-1"
+              fill="#FAF6EE" style="font-variation-settings: 'opsz' 144, 'SOFT' 60;">Color</text>
 
-        <text
-          x="350" y="666"
-          text-anchor="middle"
-          font-family="'Fraunces', serif"
-          font-size="78"
-          font-style="italic"
-          letter-spacing="-1"
-          fill="#FAF6EE"
-          style="font-variation-settings: 'opsz' 144, 'SOFT' 100;">Coat</text>
+        <text x="350" y="666" text-anchor="middle"
+              font-family="'Fraunces', serif" font-size="78" font-style="italic"
+              letter-spacing="-1" fill="#FAF6EE"
+              style="font-variation-settings: 'opsz' 144, 'SOFT' 100;">Coat</text>
 
       </svg>
 
